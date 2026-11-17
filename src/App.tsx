@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 
 const VIDEO_SRC =
-  '/assets/aistudio/Video_para_dispositivos_m_viles_minimalista_invitaci_n_animada_para_boda_save_the_date_en_color_caf___beige_y_blanco_b2f926ee.mp4';
+  './assets/aistudio/Video_para_dispositivos_m_viles_minimalista_invitaci_n_animada_para_boda_save_the_date_en_color_caf___beige_y_blanco_b2f926ee.mp4';
 const GOOGLE_MAPS_URL = 'https://maps.app.goo.gl/4YSEve9WCgkCeNYaA';
 const WHATSAPP_PHONE = '19144977595'; // +1 (914) 497-7595 sin símbolos ni espacios
 // Sábado 19 de Diciembre 2026 · 13:30 PM (Ecuador UTC-5)
