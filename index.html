@@ -47,6 +47,10 @@
         box-sizing: border-box;
       }
 
+      [hidden] {
+        display: none !important;
+      }
+
       html,
       body {
         margin: 0;
@@ -161,73 +165,6 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        cursor: pointer;
-      }
-
-      .video-top-controls {
-        pointer-events: none;
-        position: absolute;
-        top: 0.75rem;
-        right: 0.75rem;
-        left: 0.75rem;
-        z-index: 20;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0.5rem;
-      }
-
-      .video-ctrl-btn {
-        pointer-events: auto;
-        touch-action: manipulation;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 44px;
-        flex-shrink: 0;
-        border-radius: 0.75rem;
-        border: 1px solid rgba(253, 251, 247, 0.35);
-        background-color: rgba(45, 30, 24, 0.68);
-        color: var(--ivory-card);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        cursor: pointer;
-        transition: background-color 150ms ease, transform 150ms ease;
-      }
-
-      .video-ctrl-btn:hover {
-        background-color: rgba(45, 30, 24, 0.85);
-      }
-
-      .video-ctrl-btn:active {
-        transform: scale(0.975);
-      }
-
-      .video-ctrl-btn:focus-visible {
-        outline: 2px solid var(--ivory-card);
-        outline-offset: 2px;
-      }
-
-      .sound-btn {
-        gap: 0.5rem;
-        padding: 0.5rem 0.875rem;
-        font-size: 0.75rem;
-        font-weight: 500;
-        white-space: nowrap;
-      }
-
-      .icon-btn {
-        width: 44px;
-        height: 44px;
-        padding: 0;
-      }
-
-      .video-right-controls {
-        pointer-events: auto;
-        display: flex;
-        flex-shrink: 0;
-        align-items: center;
-        gap: 0.375rem;
       }
 
       .video-bottom-scrim {
@@ -974,107 +911,6 @@
                   preload="auto"
                 ></video>
 
-                <div class="video-top-controls">
-                  <button
-                    id="mute-btn"
-                    type="button"
-                    class="video-ctrl-btn sound-btn"
-                    aria-label="Activar música"
-                  >
-                    <svg
-                      id="icon-volume-off"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#e5c98b"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      hidden
-                    >
-                      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                      <line x1="22" y1="9" x2="16" y2="15"></line>
-                      <line x1="16" y1="9" x2="22" y2="15"></line>
-                    </svg>
-                    <svg
-                      id="icon-volume-on"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#e5c98b"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-                    </svg>
-                    <span id="mute-label">Música sonando</span>
-                  </button>
-
-                  <div class="video-right-controls">
-                    <button
-                      id="play-btn"
-                      type="button"
-                      class="video-ctrl-btn icon-btn"
-                      aria-label="Pausar video"
-                    >
-                      <svg
-                        id="icon-pause"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <rect x="14" y="4" width="4" height="16" rx="1"></rect>
-                        <rect x="6" y="4" width="4" height="16" rx="1"></rect>
-                      </svg>
-                      <svg
-                        id="icon-play"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        hidden
-                      >
-                        <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                      </svg>
-                    </button>
-
-                    <button
-                      id="replay-btn"
-                      type="button"
-                      class="video-ctrl-btn icon-btn"
-                      aria-label="Reiniciar video"
-                    >
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
-                        <path d="M3 3v5h5"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-
                 <div class="video-bottom-scrim" aria-hidden="true"></div>
 
                 <div class="video-progress-bar">
@@ -1395,14 +1231,6 @@
 
         var video = document.getElementById('invitation-video');
         var videoFrameBox = document.getElementById('video-frame-box');
-        var muteBtn = document.getElementById('mute-btn');
-        var muteLabel = document.getElementById('mute-label');
-        var iconVolOff = document.getElementById('icon-volume-off');
-        var iconVolOn = document.getElementById('icon-volume-on');
-        var playBtn = document.getElementById('play-btn');
-        var iconPause = document.getElementById('icon-pause');
-        var iconPlay = document.getElementById('icon-play');
-        var replayBtn = document.getElementById('replay-btn');
         var timeCurrent = document.getElementById('time-current');
         var timeTotal = document.getElementById('time-total');
         var scrubberFill = document.getElementById('scrubber-fill');
@@ -1439,8 +1267,6 @@
         var toastTextEl = document.getElementById('toast-text');
         var toastTimer = null;
 
-        var isPlaying = false;
-        var isMuted = false;
         var autoMutedByPolicy = false;
         var duration = 26.3;
         var attending = 'yes';
@@ -1466,20 +1292,7 @@
           }, 3200);
         }
 
-        function syncPlayUI() {
-          iconPause.hidden = !isPlaying;
-          iconPlay.hidden = isPlaying;
-          playBtn.setAttribute('aria-label', isPlaying ? 'Pausar video' : 'Reproducir video');
-        }
-
-        function syncMuteUI() {
-          iconVolOff.hidden = !isMuted;
-          iconVolOn.hidden = isMuted;
-          muteLabel.textContent = isMuted ? 'Activar música' : 'Música sonando';
-          muteBtn.setAttribute('aria-label', isMuted ? 'Activar música' : 'Silenciar música');
-        }
-
-        /* CARGA INTELIGENTE DE VIDEO PARA GITHUB PAGES, VITE Y ARCHIVO LOCAL */
+        /* CARGA INTELIGENTE Y REPRODUCCIÓN CONTINUA DE VIDEO Y MÚSICA */
         var videoSourceIndex = 0;
         function loadVideoCandidate(idx) {
           if (idx >= VIDEO_CANDIDATES.length) return;
@@ -1494,11 +1307,7 @@
           if (playPromise && typeof playPromise.then === 'function') {
             playPromise
               .then(function () {
-                isMuted = false;
-                isPlaying = true;
                 autoMutedByPolicy = false;
-                syncMuteUI();
-                syncPlayUI();
               })
               .catch(function () {
                 video.muted = true;
@@ -1506,16 +1315,9 @@
                 if (mutedPromise && typeof mutedPromise.then === 'function') {
                   mutedPromise
                     .then(function () {
-                      isMuted = true;
-                      isPlaying = true;
                       autoMutedByPolicy = true;
-                      syncMuteUI();
-                      syncPlayUI();
                     })
-                    .catch(function () {
-                      isPlaying = false;
-                      syncPlayUI();
-                    });
+                    .catch(function () {});
                 }
               });
           }
@@ -1531,30 +1333,29 @@
         loadVideoCandidate(0);
         startPlaybackOnEntry();
 
-        function unlockSoundOnFirstInteraction() {
-          if (!autoMutedByPolicy) return;
-          video.muted = false;
-          isMuted = false;
-          autoMutedByPolicy = false;
-          syncMuteUI();
+        function ensureMusicPlaying() {
+          if (autoMutedByPolicy || video.muted) {
+            video.muted = false;
+            autoMutedByPolicy = false;
+          }
           if (video.paused) {
             video.play().catch(function () {});
           }
-          window.removeEventListener('pointerdown', unlockSoundOnFirstInteraction);
-          window.removeEventListener('keydown', unlockSoundOnFirstInteraction);
         }
 
-        window.addEventListener('pointerdown', unlockSoundOnFirstInteraction, { once: true });
-        window.addEventListener('keydown', unlockSoundOnFirstInteraction, { once: true });
-
-        video.addEventListener('play', function () {
-          isPlaying = true;
-          syncPlayUI();
+        ['pointerdown', 'touchstart', 'click', 'keydown'].forEach(function (evtName) {
+          window.addEventListener(evtName, ensureMusicPlaying, { passive: true });
         });
 
-        video.addEventListener('pause', function () {
-          isPlaying = false;
-          syncPlayUI();
+        document.addEventListener('visibilitychange', function () {
+          if (document.visibilityState === 'visible' && video.paused) {
+            video.play().catch(function () {});
+          }
+        });
+
+        video.addEventListener('ended', function () {
+          video.currentTime = 0;
+          video.play().catch(function () {});
         });
 
         video.addEventListener('loadedmetadata', function () {
@@ -1571,59 +1372,6 @@
           videoScrubber.value = String(ct);
           var pct = duration > 0 ? Math.min(100, (ct / duration) * 100) : 0;
           scrubberFill.style.width = pct + '%';
-        });
-
-        function togglePlay() {
-          if (video.paused) {
-            video
-              .play()
-              .then(function () {
-                isPlaying = true;
-                syncPlayUI();
-              })
-              .catch(function () {
-                isPlaying = false;
-                syncPlayUI();
-              });
-          } else {
-            video.pause();
-            isPlaying = false;
-            syncPlayUI();
-          }
-        }
-
-        video.addEventListener('click', togglePlay);
-        playBtn.addEventListener('click', togglePlay);
-
-        muteBtn.addEventListener('click', function () {
-          autoMutedByPolicy = false;
-          isMuted = !video.muted;
-          video.muted = isMuted;
-          syncMuteUI();
-          if (video.paused) {
-            video
-              .play()
-              .then(function () {
-                isPlaying = true;
-                syncPlayUI();
-              })
-              .catch(function () {});
-          }
-        });
-
-        replayBtn.addEventListener('click', function () {
-          video.currentTime = 0;
-          video.muted = isMuted;
-          video
-            .play()
-            .then(function () {
-              isPlaying = true;
-              syncPlayUI();
-            })
-            .catch(function () {
-              isPlaying = false;
-              syncPlayUI();
-            });
         });
 
         videoScrubber.addEventListener('input', function (e) {
